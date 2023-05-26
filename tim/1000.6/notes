@@ -1,0 +1,146 @@
+What is Computation & Pythons Basics: 
+  - Computers do calculations and store results. They do built-in language calculations or programs that programmers write. 
+  - Declarative Knowledge: statement of fact.
+  - imperative knowledge: How-to or Recipe to get to declarative knowledge
+  - Algorithm: Sequence of steps, Flow of control process that specifies when each step is executed & a means of determining when to stop.
+  - Scaler Objects: Cannot be subdivied. For Ex Integers (Int), Boolean (bool) etc 
+  - Non Scaler Objects: can be subdivied. For Ex List of Int & strings = [5,bh,4,h] 
+  - Expressions:  objects + operators 
+  - operators:  + - * / %(reminder) and **(power). // = integer division, returns on the integer parts and drops off decimal values.  
+  - variable = value stored in computer memory, this can be retrieved by typing that name. Easier to recall and used else where in the code.  
+  - variable mem space = if the variable value is changed, the old value is still in the memory but without a handle and space is retrieved by python garbage collectors. 
+
+Branching (conditionals) & Iteration (for/whole loops):
+  - Strings: Can be letters, special characters, spaces, digits. When concanating strings, python will replace comma with spaces when used for concanating whereas + concanation will not add space.  
+  - Camparisons: Python allows comparisons (>,<,>=,<=,==,!=) between same types (int,float,strings) and between int/floats but not between strings to int/float. 
+  - Logical Operators on Booleans: not a -> True if a is false and False if a is True. a AND b -> True if both are True. a OR b -> True if either or both are True. 
+  - Branching (Control Flow): "if" condition block, if the <condition> is True then evaluate expressions in that intended block. "else" blocks allows to run expressions if the prior "if" condition was False. "elif" allows for multiple "if" expressions in one conditional block of expressions. 
+  - Loops: "while" loop is used if the condition is True then keep on looping basically Repeat until <condition> is false. "For" Loop is another method for running loops. "break" can be used to stop executing loop and exit out if it. 
+  - Using "range" with For loop can allows to better flow control your loop. Syntax "range(start,stop,step)" , default value for start is 0 and step 1 and are optional. Range Start/Stop/Step can only be Ints, you can use "range(ord('a'), ord('z')+1)" for looping over english alphabets.  
+  - "For" vs "While" -> use "For" when you have better idea of numbers of itereations and "while" when loop input in unpredictable. 
+  
+String Manipulation, Guess and Check, Approximations, Bisection:
+  - String Indexing = Going Left to Right is 0, 1, 2...n and Right to Left is -1, -2, -3 ... -n
+  - String Slice = Use [Start:Stop:Step], by default step is 1. You can omit numbers and just leave colons. 
+  - Strings are immutable
+  - Algorithm explanation in Algos section below. 
+ 
+Decomposition, Abstractions, Functions: 
+  - Decomposition: Spliting of larger program into smaller, reusable code that keeps your full program clean and coherent. This is done by using modules or functions in python followed by Class/Objects. 
+  - Abstractions: Can be achieved with Function specifications or docstrings.
+  - Functions: reusable piece of code. Runs when called or invoked. If no "return" in function, python returns "none" type. 
+    - They have names
+    - has parameters (sent to the functions, can be 0 or more)
+    - has body and returns something. 
+  - Note: Inside a function, you can access vaiable defined outside but you cannot modify a variable defind outside of that function. You can use global variable but they are not recommended. 
+  
+  
+Tuples, Lists, Aliasing, Mutability and Cloning:
+  - Tuples: 
+    - collection of data where data can be of any type seprated by commas. 
+	- They are immutable and cannot be modified. 
+	- Created using parentheses "()". 
+	- Tuple with one element = ("what",) ## Comma is required to show single element tuple. 
+	- Great to return more than 1 value from function.  
+  - Lists: 
+    - Mutable collection of data where data can be of any type seprated by commas. 
+	- Created using square brackets
+	- Indices, ordering and slicing works same a Tuple 
+	- List elements are indexed 0 to len(list) - 1
+	- List operations: 
+	  - Add element at end of list using append --> newlist.append("x")
+	  - "+" operator = concatenates the lists, this will create a new List that combination of 2 other lists 
+	  - extend method = Mutates list and adds other list elements to it. ex L1.extend([1,2]) --> will add 2 elements to L1 list. 
+	  - del(L1[0]) -> will delete element in L1 index 0 
+	  - L1.pop() -> removes element at end of list 
+      - L1.remove(9) -> will remove element == 9 from the list. Only removes the first occurance of the element.  	  
+    - Converting Lists to Strings & Vice versa 
+	  - string to list = list(s) ## returns a list with every character of s as element
+	  - string split at white space to list = s.split() ## splits on spaces if called without a parameter 
+	  - list of characters into a string = ''.join(L1); if L1 = [1,2,3] then ''.join(L1) -> "123"
+	- Sort: Mutates List to sort it.
+	- Sorted: Returs new sorted list.  
+    - reverse: Mutates List to reverse sort it. 
+    - Aliasing: If List L1 = List L2 then changing L1 will change L2 in same way. 
+	- Cloning: If you want to create a copy of List L1 then should NOT alter if L1 mutates then use cloaning. For Ex: L1 = L2[:] 
+	- Note: Python keeps track of list indices if you modifiying the list within a loop over the same list. workaround, make a clone of list then modify it in a loop and reassign. 
+	
+Recursion and Dictionaries:
+  - Recursion Algorithmically: a way to design solution to problems by decrease and conquer (aka reduce a problem to simpler versions of the same problem) 
+  - Recursion semantically: A programming technique where a function calls itself. Goal is to not have infinite recursion. 
+    - must have 1 or more base cases that are easy to solve. The base case if where you stop the recursion, in the example below for factorial, the base is when N == 1. 
+	- must solve the same problem on some other input with the goal of simplifying the larger problem input. 
+	- Each recursive call to a function creates its own scope. 
+  - Simple Ex: Function to calculate Factorial of a whole number
+    - def fact(n):
+	    if n == 1:
+		  return 1
+		else:
+		  return n*fact(n-1)
+      print(fact(4))
+  - Recursion is basically same a mathematical induction where we do if something is true for K then it will be true for K + 1. 
+  - Fibonacci numbers: It has 2 base cases as the simplied version requires addition of different base cases. 
+  - Another example of recursion is Palindrome (like ARORA)
+  - Dictionaries: Stores the data in to a key, value format. Data is then accessed using the key as index. 
+    - Represented by {}. Ex fruit_color = {}
+	- Adding entry EX: fruit_color['mango'] = 'Yellow'
+	- test if key present in dict EX: 'berry' in fruit_color -> returns false 
+	- Remove entry Ex: del(fruit_color['mango'])
+	- To access keys Ex: fruit_color.keys(), To access Values Ex: fruit_color.values() --> returns as list in random order. NOTE: As of python 3.7 dicts are ordered. 
+	- Dict needs to have unique keys and immutable
+
+Testing, Debugging, Exceptions, Assertions:
+  - Testing: Allways test all units after new bugs were fixed. 
+    - Unit Testing: validate each piece of program, testing each function separately. 
+	- Regression Testing: Add test for bugs as you find them. Catch reintroduced errors that were previously fixed. 
+	- Integration testing: Does overall program work ? Tend to rush to do this. 
+  - Black Box testing: Done based on the DocString for the function, done without looking at the code to avoid implementer biases. Testing can be reused when code changes. 
+  - Glass Box testing: Using the code itself to design test cases. AKA path-complete if every potential path through code is tested atleast once. 
+  - Debugging Steps:
+    - study available daya, form hypothesis, repeatable experiments and pick simplest input to test with. 
+	- study program code and ask how did I get the unexpected result. 
+  - Exceptions: AKA Errors. Exception to what the program expected. 
+    - one method in Python is to use try/expect where you can handle Errors more gracefully in your code. 
+	- Think of try/expect as if/else statements for error handling 
+	- You can expand the try/expect to try/else/expect/finally where code in finally will be executed regardless of errors above. 
+  - Assertions: Good example of defensive programming
+    - Can be used as replacement for try/expect, assert can be placed in the start of a function and can verify incoming data and generate assert error. Function will stop execution if assertion expection is detected. 
+	- Can also be used in unit testing.
+	
+
+
+Algos:
+======
+Guess and Check: Finding a solution by exhausting the possible answers. 
+cube = 8
+for guess in range (abs(cube) + 1):
+    if guess**3 >= cube:
+	    break
+if guess**3 != abs(cube):
+    print (cube, 'is not a perfect cube')
+else:
+    if cube < 0:
+        guess = -guess	
+***************************************
+Approximations: Basically increamenting by a small number and agreeing to an answer thats within the range of the actual answer and stoping when it is within a Epsilon (closest to the actual answer). Not a good solution as your guess can miss the epsilon and go into infinite loop. 
+***************************************
+Bisection Search: AKA Binary Search: Used to find the Index of an element in a Sorted List by dividing the Array/List and looking at the element at the middle of the List. If the element matches the element at the mid of the List the search is successful. If the target element is less than element at Mid then new end is set up as mid - 1 otherwise new start is set as mid + 1. 
+The search converges around Log2N where N is the last index of the List. Ex, finding number in 0 - 100 would be within Log2 OF 100 which is equal to ~6.4. 
+
+arry = [1,2,4,7,15,28,45,89]
+target = 45
+def binarysrh(arry,target):
+    start = 0 #start counter at Zero
+    end = len(arry) - 1 #End counter at last element in list 
+    while start <= end: #Repeat Till start is less than or equal to End 
+        mid = (start + end) // 2 # Divide the List by 2 and take middle as lower end rounder for the divison. 
+        if arry[mid] == target: # is the middle index item your target ? 
+            return mid  # Return if that is indeed your Target
+        elif arry[mid] < target: # if that item is less than your start 
+            start = mid + 1 # then make start point as mid + 1, this drops the first half of List reducing the size of array 
+        elif arry[mid] > target: # if that item is more than your start 
+            end = mid - 1 # then make end point as mid - 1, this drops the last half of List reducing the size of array 
+    return -1 # Return -1 if target is not in List 
+
+print (binarysrh(arry,target))
+*****************************************
