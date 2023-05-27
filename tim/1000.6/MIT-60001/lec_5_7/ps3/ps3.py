@@ -213,14 +213,14 @@ def is_valid_word(word, hand, word_list):
     new_hand = hand.copy()
     for wo_li in new_word_list:
         wo_li = wo_li.lower()
-        if my_new_word in wo_li:
-            set1 = {k for k,v in new_hand.items()}
-            set2 = {i for i in wo_li.lower()}
-            print (set1, set2)
-            if set2.issubset(set1):
-                return True
-            else:
-                return False
+        if my_new_word == wo_li:
+            for i in wo_li.lower():
+                if i not in new_hand:
+                    return False
+                elif wo_li.count(i) > new_hand[i]:
+                    return False
+                else:
+                    return True
     return False
 
 #
