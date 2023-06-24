@@ -23,6 +23,7 @@ plus a percentage of your monthly salary (annual salary / 12).
 annual_salary = int(input("Enter your annual salary: "))
 current_savings = float(input("Enter the percent of your salary to save, as a decimal: "))
 total_cost = int(input("Enter the cost of your dream home: "))
+semi_raise = float(input("Enter the semiannual raise, as a decimal: "))
 
 portion_down_payment = 0.25
 monthly_saving = (annual_salary * current_savings) / 12
@@ -35,7 +36,11 @@ total_investment_gain = 0
 investment_gain = 0
 while down_payment_needed > total_money:
     num_months += 1
-    total_money = (monthly_saving * num_months) + total_investment_gain
+    if num_months % 6 == 1 and num_months != 1:
+        annual_salary = annual_salary + (annual_salary * semi_raise)
+        monthly_saving = (annual_salary * current_savings) / 12
+    total_saving = total_saving + monthly_saving
+    total_money = total_saving + total_investment_gain
     total_investment_gain = total_investment_gain + (total_money * monthly_rate_inv)
 
 print ("Number of months:", num_months)
