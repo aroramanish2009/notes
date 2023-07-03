@@ -107,6 +107,134 @@ Testing, Debugging, Exceptions, Assertions:
     - Can be used as replacement for try/expect, assert can be placed in the start of a function and can verify incoming data and generate assert error. Function will stop execution if assertion expection is detected. 
 	- Can also be used in unit testing.
 	
+OOP:
+  - Everything in python is an Object ex string, list, dict, functions etc
+  - You can create your own data type by using a Class.
+  - Class:
+    - Making a Class is like creating your own data type. 
+    - Creating an instance of that class means that you are creating an object of that data type. You can as many objects as you want. Ex: Someone made a class for Dict and now we create as many objects of dict as needed and interact with them based on the methods implemented in that class. 
+    - Class Attributes: Data and Procedures (methods)
+    - Data Attributes: If you were building Class Car then tires, engines, seats will be data attributes. AKA Instance Variable
+    - Procedure Attributes(methods): Same Class Car with data attributes will have methods like Mount the tires, bolt in the seats. 
+    - This Data & Methods are Class specific, ex you cannot use these data and methods for Class Animal. (Exception Super Class) 
+  - Defining a Class:
+    - 1st - define how to create an instance of Object, done using a special method called __init__ to initialize some data attributes
+    - the "self" in the def __init__(self, whatever): — represents a parameter that refers to an instance of the said Class. 
+    - Argument for Self is not needed as python creates it itself. Ex conn = connection(ip_add, user, pass), In this ex, python will replace self with conn and save data attributes to the conn instance of connection class. 
+    - Methods in Class are much like Functions that take parameters, perform operation and return value. Only difference is that they have "self" and dot notation. 
+    - __str__ is another special method that can be used to return whatever you want when user prints Instance name. Ex print (conn) — will print whatever is returned from def __str__ that you need to define. 
+    - you can define many other special methods for your class. For Example: simple operations like + can be defined as __add__ and it does something as you define. 
+ 
+Python Classes and Inheritance : 
+  - Class Getters: Methods in class that lets you retrieve class attributes. 
+  - Class Setters: Methods that lets you set new class attributes. 
+  - Not recommended to pull data for class attributes directly, it is recommended to use getters and setters. The idea is to maintain information hiding or basically we do not want users to know/understand how the class was written. 
+  - Default Argument: Value of a parameter if user doesn't pass in any value. Ex: def name_obj(self, name="") 
+  - Class Hierarchy
+    - Parent Class (Superclass) Ex. Class Animal 
+    - Child Class (subclass) Ex Class Dog, Class Cat
+       - Inherits all data and behavior from Superclass
+       - Add more info 
+       - Add more behavior by adding new methods
+       - Override behavior of parent class methods
+  - Class Variable:
+    - There values are shared between all instances of the class so these instances can modify them. 
+    - If one instance of class modifies Class Variable then it is modified for all classes. 
+    - Accessed using class name. Ex Cat.tag
+
+Programing Efficiency Part-1: 
+1. Efficiency - can be time or space (memory)
+2. Recommended is to use "abstract notion of order of growth", this is better than measure of timer or count of operations. 
+3. Timing is inconsistent because:
+    1. Machines performance can vary
+    2. Implementations of algo can vary 
+    3. Data size can vary
+4. Count of Operations is inconsistent:
+    1. Data size will change number of operations as we do not have clear indication of which operations to count and how much 
+    2. Depends on implementation
+5. Big O, focus on dominant terms inside of the algorithm. Ignore the small steps + constants 
+6. Analyze programs for their complexity :
+    1. Check for statements inside functions
+    2. Focus on dominant terms 
+7. Law of Addition for Big O:
+    1. O(f(n)) + O(g(n)) == O(f(n) + g(n))
+    2. Ex O(n) + O(n*n ) == O(n + n^2) == O(n^2) because of dominant term. 
+8. Law of Multiplication for Big O:
+    1. Used in nested loops situation 
+    2. O(f(n)) * O(g(n)) == O(f(n) * g(n))
+    3. Ex: Nested for loop with depth of 2 == O(n) * O(n) = O(n^2)
+    4. Above is n^2 because the otter loop goes over the inner loop in every iteration 
+9. Complexity Classes:
+    1. O(1) - constant running time
+    2. O(log n) = Logarithmic running time. Basically Log of base 10 times n
+    3. O(log* n) = log star N = num of times O(log n) is run. Example could be binary search if implemented with getting rid of not needed part of list (basically moving the mid, high, low pointers in each run)
+    4. O(n) = Linear run time
+    5. O(n log n) = log linear 
+    6. O(n^c)  (c is a constant ) = Polynomial run time 
+    7. O(c^n) = Exponential run time 
+
+Programing Efficiency Part-2: 
+1. Key Points:
+    1. Something that reduces the size of N to N -1 to N-2 is Linear. Example Iterative/recursive factorial implementation are of same order of growth since the number of loops or recursive call is linear. 
+    2. Something that reduces the size in half or third or quarter is Logarithmic. Basically reducing the size of input by a constant factor in each loop. Ex - Bisection search implemented where we reduce the size of list in each loop
+    3. Polynomial algorithms are quadratic in nature, complexity grows with square the size of input. Ex: Nested Loops or recursive call that do not reduce the size of input
+    4. Exponential Complexity: Ex Tower of Hanoi as on each recursive call we have 2 more calls. Multiple recursive call at each where list of data increases at each call. 
+
+1. Linear search is O(n) but can be done on unsorted list. Worse case complexity is O(n).
+2. Binary search complexity is O(log n) but list needs to be sorted. Sort is normally more expensive than O(n) but in the event the search is done multiple times then it is recommended to Sort once and then do searched multiple times. 
+3. Ways to Sort using different Algos:
+    1.  Money Sort or slow sort or Bogo Sort: Permutation circus, basically go random and hope it works. Best case complexity is O(n) and worse case is unbounded.
+def bogo_sort(L):
+    while not is_sorted(L):
+        random.shuffle(L)
+    2. Bubble Sort: Compare consecutive pairs of elements. Swap elements in pair such that smaller if first. Start over again when end of list is reached. Stop when no more swaps have been made. Largest unsorted element always at end after each pass. O(n^2) is worse case as there are 2 loops over N elements.
+def bubble_sort(L):
+    swap = false
+    while not swap:
+        for j in range(1, len(L):
+             if L[j - 1]> L[j]:
+                 swap = False
+                  temp = L[j]
+                  L[j] = L[j - 1]
+                  L[j - 1] = temp
+Inner FOR loop is doing comparison, outer While loop is doing multiple passes until no more swaps. 
+    3. Selection Sort: First Step: Extract minimum element and swap the element at index 0. Subsequent Step, extract minimum element on remaining sublist and swap it with the element at index i position.
+def selection_sort(L):
+    suffixSt = 0
+    while suffixST != len(L):
+         for i in range(suffixST, len(L)):
+             if L[i] < L[suffixST]:
+                 L[suffixST], L[i] = L[I], L[suffixST]
+          suffixST += 1
+Outer Loop executes len(L) times and inner loop executes len(L) - i times. Complexity is O(n^2) where n = len(L)
+    4. Merge Sort: Divide the unsorted list into 2 until you have 1 element in the list, then sort and merge back to top level list. We are only going to look at element once which is a nice property to reduce the complexity of the code.
+def merge(left, right):
+    result = []
+    i,j = 0,0
+    while i < len(left) and j < len(right):
+        if left[ i ] < right[j]:
+             result.append(left[ i ])
+             i += 1
+        else:
+             result.append(right[j])
+             j += 1
+     while (i < len(left)):
+             result.append(left[ i ])
+             i +=1
+     while (j < len(right)):
+             result.append(right[j])
+             j += 1
+     return result
+
+def merge_sort(L):
+    if len(L) < 2:
+        return L[:]
+    else:
+         middle = len(L) // 2
+         left = merge_sort(L[:middle])
+         right = merge_sort(L[middle:])
+         return merge(left, right)
+Complexity of Merge Sort is O(n log(n)) where n is the length of list L.
 
 
 Algos:
