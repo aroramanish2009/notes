@@ -1,0 +1,20 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Optimization Problems:
+  - Optimization Model: It is combination of objective function that is to be maximumized or minimized with a set of constrains. Ex: Travel time from LA to Vegas but cannot spend more than 150$ and must reach Vegas within 12 hours. 
+  - Optimization Problem - Knapsack (backpack) problem:
+    - Objective - Thief to take stuff that is most valuable 
+    - Constrains - weight, size, preference, capacity to carry.
+    - Use Greedy Algorithm, this will fill the most valuable thing into the sack unless you run out of item or room before moving to next most valuable item. 
+  - Possible solutions to Problem above:
+    - Brute Force Algorithm: Create a Power Set that has all subsets of possible combination. Remove all sets that have higher weight than allowed and then pick the set with the highest value. Not practical as number of possible sets size increamenting exponentially.  
+    - Greedy Algorithm: Fill most expensive until under weight then stop. This can be problematic if it finds a local high point and global high point if sort is not done correctly. Complexity = sort complexity which is O(n log n). 
+      - Pros of Greedy Algo: Computationally efficient, easy to implement. 
+      - Cons of Greedy Algo: Doesnt always gets you the most optimized solution. Has the local best vs global best issue as described above. 
+    - Brute Force using Dicision Tree: Complexity is exponential as it is implemented recursive fashion but it can provide optimized solution based on objective and constrains. 
+    - Dynamic Programming: History of what it means, it means nothing and the name was used to shield from Congress questioning the expense to tax payer for doing math research. 
+      - Basic trick is memoization which means store the calculation answer and look it up when needed. 
+      - Here we are trading time for memory. 
+      - This really reduces the time needed to do computation. Ex: run simple fibonacci recurive on high with/without memoization. 
+      - Memoization works better when you can find a problem where you are solving same problem over and over plus we can find solution by finding solution by finding solution to the smaller problem.  
+      - Above note technical term is, Dynamic Programming yields good results on those with Optimal Substructure and overlapping subproblems.  
+  - 
