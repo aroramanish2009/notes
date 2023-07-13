@@ -21,6 +21,7 @@ def dp_make_weight(egg_weights, target_weight, memo = {}):
     memo - dictionary, OPTIONAL parameter for memoization (you may not need to use this parameter depending on your implementation)
     
     Returns: int, smallest number of eggs needed to make target weight
+    Objective: carry least total num of eggs (x) to get to wight n using y num of variable weight eggs 
     """
     # TODO: Your code here
     pass
