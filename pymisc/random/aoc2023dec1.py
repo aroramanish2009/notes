@@ -13,10 +13,19 @@ Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
 Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
 Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
 Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
+['Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green', 'Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue', 'Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red', 'Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red', 'Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green']
 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
 ['6 red, 1 blue, 3 green', ' 2 blue, 1 red, 2 green']
-'''
+{'1': ['3 blue, 4 red', '1 red, 2 green, 6 blue', '2 green'], '2': ['1 blue, 2 green', '3 green, 4 blue, 1 red', '1 green, 1 blue'], '3': ['8 green, 6 blue, 20 red', '5 blue, 4 red, 13 green'5 green, 1 red'], '4': ['1 green, 3 red, 6 blue', '3 green, 6 red', '3 green, 15 blue, 14 red'], '5': ['6 red, 1 blue, 3 green', '2 blue, 1 red, 2 green']}
+==
+{'1': [['3 blue, 4 red'], ['1 red, 2 green, 6 blue'], ['2 green']], '2': [['1 blue, 2 green'], ['3 green, 4 blue, 1 red'], ['1 green, 1 blue']], '3': [['8 green, 6 blue, 20 red'], ['5 blue, 4 red, 13 green'], ['5 green, 1 red']], '4': [['1 green, 3 red, 6 blue'], ['3 green, 6 red'], ['3 green, 15 blue, 14 red']], '5': [['6 red, 1 blue, 3 green'], ['2 blue, 1 red, 2 green']]}
+{'blue': 6, 'red': 4, 'green': 2}
+{'blue': 4, 'green': 3, 'red': 1}
+{'green': 13, 'blue': 6, 'red': 20}
+{'green': 3, 'red': 14, 'blue': 15}
+{'red': 6, 'blue': 2, 'green': 3}
 
+'''              
 def data_mass(datalist):
     dataset = {}
     sumall = 0
@@ -39,33 +48,9 @@ def data_mass(datalist):
             sumall = sumall + int(k)
     print (sumall)
 
-def data_mass2(datalist):
-    sumall = 0
-    for i in datalist:
-        gameidfull,setdata = i.split(':')[0],i.split(':')[1].strip()
-        gameid = gameidfull.split(' ')[1]
-        setdatalist = setdata.split(';')
-        mincubes = {}
-        for item in setdatalist:
-            eachsetcolor = item.split(',')
-            for setcolor in eachsetcolor:
-                setcolor = setcolor.strip()
-                if mincubes.get(setcolor.split(' ')[1]) == None:
-                    mincubes[setcolor.split(' ')[1]] = int(setcolor.split(' ')[0])
-                elif int(mincubes.get(setcolor.split(' ')[1])) < int(setcolor.split(' ')[0]):
-                    mincubes[setcolor.split(' ')[1]] = int(setcolor.split(' ')[0])
-        product = 1
-        for key in mincubes:
-            product = product * mincubes[key]
-        sumall = sumall + product
-        
-    print (sumall)
-                
-        
         
 def main():
     data_mass(Lines)
-    data_mass2(Lines)
 
 if __name__ == "__main__":
     main()
