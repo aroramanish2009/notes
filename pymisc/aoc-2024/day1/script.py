@@ -4,7 +4,7 @@ from collections import OrderedDict
 from collections import defaultdict
 datafile = sys.argv[1]
 
-def readdata(datafile):
+def part1(datafile):
   with open(datafile, 'r') as sample_file:
     Lines=sample_file.read().strip().split("\n")
   list1 = []
@@ -50,7 +50,7 @@ def part2(datafile):
 
         
 def main():
-  #readdata(datafile)
+  part1(datafile)
   part2(datafile)
 
 if __name__ == "__main__":
